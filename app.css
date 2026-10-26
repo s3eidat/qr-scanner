@@ -1,0 +1,26 @@
+.qsc-grid { align-items: start; }
+.cam { position: relative; border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 4 / 3; margin-bottom: 4px; }
+.cam video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cam-frame { position: absolute; inset: 14% 22%; border-radius: 18px; box-shadow: 0 0 0 9999px rgba(0,0,0,.35); border: 2px solid rgba(255,255,255,.85); transition: border-color 160ms, box-shadow 160ms; }
+@media (max-width: 560px) { .cam-frame { inset: 12% 12%; } }
+.cam.hit .cam-frame { border-color: var(--ok); box-shadow: 0 0 0 9999px rgba(0,0,0,.35), 0 0 0 6px rgba(110,231,168,.35); }
+.cam-bar { position: absolute; left: 10px; right: 10px; bottom: 10px; justify-content: center; }
+.cam-bar .btn { background: rgba(20,23,27,.8); color: #fff; border-color: rgba(255,255,255,.15); backdrop-filter: blur(6px); }
+.cam-bar .btn[aria-pressed="true"] { background: var(--warn); color: #2a1604; }
+#startBox { padding: 26px 0 6px; }
+.url-box { display: grid; gap: 8px; padding: 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); }
+.url-host { font-size: 22px; font-weight: 700; letter-spacing: -.01em; word-break: break-all; }
+.url-full { font-size: 12.5px; word-break: break-all; line-height: 1.5; }
+.url-full b { color: var(--text); }
+.url-warn { color: var(--warn); font-size: 13px; line-height: 1.45; }
+.url-box .chip { justify-self: start; }
+.kv th { width: 1%; white-space: nowrap; text-transform: none; letter-spacing: 0; font-size: 12.5px; }
+.kv td { word-break: break-word; white-space: pre-wrap; }
+.kv td.act { width: 1%; text-align: right; }
+.raw { max-height: 220px; overflow: auto; margin: 8px 0 0; }
+.hist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.hist-item { width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; text-align: left;
+  padding: 9px 12px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--line); transition: border-color var(--dur); }
+.hist-item:hover { border-color: var(--line-strong); }
+.hist-t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 560px) { .hist-item { grid-template-columns: auto minmax(0, 1fr); } .hist-item .faint { grid-column: 2; } }

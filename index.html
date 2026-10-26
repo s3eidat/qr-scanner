@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>QR Scanner — Free Online QR Code Reader (Camera or Image) | S3eidat Tools</title>
+<meta name="description" content="Scan QR codes with your camera or from a photo or screenshot. See the full link before you open it, read Wi-Fi and contact codes, keep a private history. Free, nothing uploaded.">
+<meta property="og:title" content="QR Scanner — free, private QR code reader">
+<meta property="og:description" content="Scan QR codes with your camera or an image. Links are never opened automatically. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+<script src="lib/jsQR.js"></script>
+</head>
+<body data-tool="qr-scanner">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>QR Scanner</h1>
+    <p>Point your camera at a QR code, or drop, pick or paste an image. You always see the full link first. Nothing opens until you click.</p>
+  </section>
+
+  <div class="grid-2 qsc-grid">
+    <section class="card">
+      <div class="row between">
+        <h2>Scan</h2>
+        <span class="chip" id="engine"></span>
+      </div>
+      <div class="cam" id="cam" hidden>
+        <video id="video" playsinline muted></video>
+        <div class="cam-frame" aria-hidden="true"></div>
+        <div class="cam-bar row">
+          <button class="btn small" id="stop"><svg class="i"><use href="#i-pause"/></svg>Stop</button>
+          <button class="btn small" id="flip" hidden><svg class="i"><use href="#i-refresh"/></svg>Switch camera</button>
+          <button class="btn small" id="torch" hidden aria-pressed="false">Torch</button>
+        </div>
+      </div>
+      <div class="stack" id="startBox">
+        <button class="btn primary big" id="start"><svg class="i"><use href="#i-play"/></svg>Start camera</button>
+        <p class="faint center">Your browser asks for camera permission when you click. Video is processed on this device and never recorded or sent.</p>
+      </div>
+      <label class="drop mt" id="drop">
+        <input type="file" accept="image/*" hidden>
+        <svg class="i"><use href="#i-image"/></svg>
+        <b>Scan an image</b>
+        <span>Drop a photo or screenshot, click to choose, or press <kbd>Ctrl</kbd>+<kbd>V</kbd> to paste</span>
+      </label>
+      <canvas id="work" hidden></canvas>
+    </section>
+
+    <section class="card" id="resultCard" aria-live="polite">
+      <div class="row between">
+        <h2>Result</h2>
+        <span class="chip" id="rtype">Nothing yet</span>
+      </div>
+      <div id="result">
+        <div class="empty"><b>No code scanned yet</b>Scan with the camera or drop an image.</div>
+      </div>
+    </section>
+  </div>
+
+  <section class="card mt">
+    <div class="row between">
+      <h2>History <small id="hcount"></small></h2>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="keep" checked> Keep history on this device</label>
+        <button class="btn ghost small" id="hclear"><svg class="i"><use href="#i-trash"/></svg>Clear</button>
+      </div>
+    </div>
+    <ul class="hist" id="hist"></ul>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
